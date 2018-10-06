@@ -57,9 +57,10 @@ def signup_validate():
             user_error = "That's not a valid username"
             username = ""
 
-        if "@" not in email or "." not in email:
-            email_error = "That is not a valid email"
-            email = ""
+        if len(email)>0:
+            if ("@" not in email) or ("." not in email) or (" " in email):
+                email_error = "That is not a valid email"
+                email = ""
 
         if not pass_error and not verification_error and not user_error and not email_error:
             return redirect('/welcome?username=' + username)
